@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>❤Yang❤</title>
+    <style>
+      *{
+          padding: 0;
+          margin: 0;
+      }
+      body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #000;
+          overflow: hidden;
+      }
+      ul{
+          position: relative;
+          display: flex;
+          height: 200px;
+      }
+      ul::after{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          color: darkturquoise;
+          font-size: 30px;
+          font-weight: 700;
+          transform: translate(-50%,-700%);
+      }
+      li{
+          width: 20px;
+          height: 20px;
+          border-radius: 10px;
+          margin: 0 10px;
+      }
+      li:nth-child(1){
+          background-color: red;
+          animation: love1 5s 0s infinite;
+      }
+      li:nth-child(2){
+          background-color: darkturquoise;
+          animation: love2 5s 0.2s infinite;
+      }
+      li:nth-child(3){
+          background-color: darksalmon;
+          animation: love3 5s 0.4s infinite;
+      }
+      li:nth-child(4){
+          background-color: deeppink;
+          animation: love4 5s 0.6s infinite;
+      }
+      li:nth-child(5){
+          background-color: yellow;
+          animation: love5 5s 0.8s infinite;
+      }
+      li:nth-child(6){
+          background-color: deeppink;
+          animation: love4 5s 1s infinite;
+      }
+
+      li:nth-child(7) {
+          background-color: darksalmon;
+          animation: love3 5s 1.2s infinite;
+      }
+
+      li:nth-child(8) {
+          background-color: darkturquoise;
+          animation: love2 5s 1.4s infinite;
+      }
+
+      li:nth-child(9) {
+          background-color: red;
+          animation: love1 5s 1.6s infinite;
+      }
+      /* 下面定义动画 */
+      @keyframes love1{
+          30%,50%{
+              height: 60px;
+              transform: translateY(-30px);
+          }
+          70%,100%{
+              height: 20px;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes love2 {
+
+          30%,
+          50% {
+              height: 125px;
+              transform: translateY(-60px);
+          }
+
+          70%,
+          100% {
+              height: 20px;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes love3 {
+
+          30%,
+          50% {
+              height: 160px;
+              transform: translateY(-75px);
+          }
+
+          70%,
+          100% {
+              height: 20px;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes love4 {
+
+          30%,
+          50% {
+              height: 180px;
+              transform: translateY(-60px);
+          }
+
+          70%,
+          100% {
+              height: 20px;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes love5 {
+
+          30%,
+          50% {
+              height: 200px;
+              transform: translateY(-45px);
+          }
+
+          70%,
+          100% {
+              height: 20px;
+              transform: translateY(0);
+          }
+      }
+      .text{
+          color: FloralWhite;
+          /* background-image:-webkit-repeating-linear-gradient(bottom,green,red 100px);
+          -webkit-background-clip:text; 
+        -webkit-text-fill-color:transparent;  */
+          width: 25%;
+          margin: 0 5%;
+          line-height: 25px;
+      }
+      .text p:not(:nth-child(1)){
+          text-indent: 30px;
+      }
+      .text div{
+          text-align: right;
+          width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <div class="text">
+        <p>阳宝宝：</p>
+        <p>我们才认识了一年多，却像已经认识了好久。我记得去年我们一起在会议室门口负责签到的时候，当时你笑着，有点点不好意思的说，你有点话痨哈哈哈哈哈哈哈哈哈，我当时心里还在想，这小姑娘怎么这么可爱。</p>
+        <p>当时我的心里还把你当小学妹，而现在已经没有你比我小一岁的感觉了...除了你在地上滑滑板、拉着我蹦蹦跳跳的跑、创作欲望大发、吵着美美我饿...（此处省略一万字）的时候。</p>
+        <p>希望阳阳小宝贝一直无忧无虑可可爱爱，永远像现在这个样子。不过我好想看你谈恋爱哈哈哈哈哈哈，我会努力的！</p>
+        <p>圣诞快乐！越来越好！</p>
+        <div>爱你</div>
+        <div>美美</div>
+    </div>
+    
+    <audio id="audio" src="http://antiserver.kuwo.cn/anti.s?format=mp3|aac&rid=6213724&br=320kmp3&type=convert_url&response=res" style="opacity:0" preload="auto" controls loop hidden="true"/>  
+    <script>
+        var myAuto = document.getElementById('audio');  
+        myAuto.play();  
+
+        function snow() {
+            //    1、定义一片雪花模板
+            var flake = document.createElement('div');
+            // 雪花字符 ❄❉❅❆✻✼❇❈❊✥✺
+            flake.innerHTML = '❆';
+            flake.style.cssText = 'position:absolute;color:#fff;';
+
+            //获取页面的高度 相当于雪花下落结束时Y轴的位置
+            var documentHieght = window.innerHeight;
+            //获取页面的宽度，利用这个数来算出，雪花开始时left的值
+            var documentWidth = window.innerWidth;
+
+            //定义生成一片雪花的毫秒数
+            var millisec = 80;
+            //2、设置第一个定时器，周期性定时器，每隔一段时间（millisec）生成一片雪花；
+            setInterval(function() { //页面加载之后，定时器就开始工作
+                //随机生成雪花下落 开始 时left的值，相当于开始时X轴的位置
+                var startLeft = Math.random() * documentWidth;
+
+                //随机生成雪花下落 结束 时left的值，相当于结束时X轴的位置
+                var endLeft = Math.random() * documentWidth;
+
+                //随机生成雪花大小
+                var flakeSize = 15 + 20 * Math.random();
+
+                //随机生成雪花下落持续时间
+                var durationTime = 4000 + 7000 * Math.random();
+
+                //随机生成雪花下落 开始 时的透明度
+                var startOpacity = 0.7 + 0.3 * Math.random();
+
+                //随机生成雪花下落 结束 时的透明度
+                var endOpacity = 0.2 + 0.2 * Math.random();
+
+                //克隆一个雪花模板
+                var cloneFlake = flake.cloneNode(true);
+
+                //第一次修改样式，定义克隆出来的雪花的样式
+                cloneFlake.style.cssText += `
+                        left: ${startLeft}px;
+                        opacity: ${startOpacity};
+                        font-size:${flakeSize}px;
+                        top:-25px;
+                              transition:${durationTime}ms;
+                      `;
+
+                //拼接到页面中
+                document.body.appendChild(cloneFlake);
+
+                //设置第二个定时器，一次性定时器，
+                //当第一个定时器生成雪花，并在页面上渲染出来后，修改雪花的样式，让雪花动起来；
+                setTimeout(function() {
+                    //第二次修改样式
+                    cloneFlake.style.cssText += `
+                                left: ${endLeft}px;
+                                top:${documentHieght}px;
+                                opacity:${endOpacity};
+                            `;
+
+                    //4、设置第三个定时器，当雪花落下后，删除雪花。
+                    setTimeout(function() {
+                        cloneFlake.remove();
+                    }, durationTime);
+                }, 0);
+
+            }, millisec);
+        }
+        snow();
+    </script>
+    <!-- <SCRIPT LANGUAGE="JavaScript">
+        //图片的过程中，横坐标的轨迹是以一点为中心的正弦曲线
+        //利用了setTimeout函数完成了动画的功能
+    
+    
+        //图片
+        var snowsrc="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3675247388,3474486015&fm=26&gp=0.jpg"
+        //雪花个数
+        var no = 10; 
+        //声明变量，xp表示横坐标，yp表示纵坐标>
+        var dx, xp, yp;
+        //声明变量，am表示左右摆动的幅度，stx表示横坐标的偏移步长，sty表示纵坐标的步长>
+        var am, stx, sty;  
+          
+        {
+          //获取当前窗口的宽度
+          clientWidth = document.body.clientWidth;
+          //获取当前窗口的高度
+          clientHeight = document.body.clientHeight;
+        }
+    
+        var dx = new Array();
+        var xp = new Array();
+        var yp = new Array();
+        var am = new Array();
+        var stx = new Array();
+        var sty = new Array();
+        var snowFlakes = new Array();
+    
+        for (i = 0; i < no; ++ i) {  
+          
+          dx[i] = 0;                        
+          //第i个图片的横坐标初始值
+          xp[i] = Math.random()*(clientWidth-50);  
+          yp[i] = Math.random()*clientHeight;//第i个图片的纵坐标初始值
+          am[i] = Math.random()*20;         //第i个图片的左右摆动的幅度
+          stx[i] = 0.02 + Math.random()/10; //第i个图片x方向的步长
+          sty[i] = 0.7 + Math.random();     //第i个图片y方向的步长
+    
+          //生成一个容纳雪花图片的div，并设置其绝对坐标
+          var snowFlakeDiv = document.createElement('div');
+          snowFlakeDiv.setAttribute('id', 'dot'+ i);
+          snowFlakeDiv.style.position = 'absolute';
+          snowFlakeDiv.style.top = 15;
+          snowFlakeDiv.style.left = 15;
+    
+          //生成一个雪花图片对象，设置宽高，并加入div
+          var snowFlakeImg = document.createElement('img');
+          snowFlakeImg.setAttribute('src', snowsrc);
+          snowFlakeImg.style.width = 30;
+          snowFlakeImg.style.height = 30;
+    
+          //将雪花div加入到document中，并通过数组保存
+          snowFlakeDiv.appendChild(snowFlakeImg);
+          document.body.appendChild(snowFlakeDiv);
+          snowFlakes[i] = snowFlakeDiv;
+        }
+    
+    
+        function snow() {  
+          for (i = 0; i < no; ++ i) {  
+            //第i个图片的纵坐标加上步长
+            yp[i] += sty[i];
+    
+            //如果新坐标超过了屏幕下沿，重置该图片的信息，包括横坐标、纵坐标以及x方向的步长和y方向的步长
+            if (yp[i] > clientHeight-50) {
+              //重新赋值图片的横坐标
+              xp[i] = Math.random()*(clientWidth-am[i]-30);
+              //重新赋值图片的纵坐标
+              yp[i] = 0;
+            }
+    
+            dx[i] += stx[i];//dx变量加上一个步长
+            //直接操作数组中对应的雪花div
+            var snowFlakeDiv = snowFlakes[i];
+            //更新图片的纵坐标
+            snowFlakeDiv.style.top = yp[i];
+            //更新图片的横坐标
+            snowFlakeDiv.style.left = xp[i] + am[i]*Math.sin(dx[i]);
+          }
+    
+          //设定动画刷新的时间周期
+          setTimeout("snow()", 10);
+        }
+    
+        //调用snowIE()函数 
+        snow();
+      </script> -->
+  </body>
+</html>

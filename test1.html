@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  type ="text/javascript">
+
+
+function fib(n){
+    if(n == 1 || n == 0){
+        return 1
+    }else{
+        return fib(n-1) + fib(n-2)
+    }
+}
+console.log(fib(5));
+
+// function testSubStr(n){
+//     if(n < 1){
+//         return[]
+//     }
+//     let num = 1
+//     let left = 0
+//     let right = n-1
+//     let top = 0
+//     let bottom = n-1
+//     let res = new Array(n)
+//     for (let i = 0; i < n; i++) {
+//         res[i] = new Array(n)
+//     }
+//     while(num <= n*n){
+//         for (let i = left; i <= right; i++) {
+//             res[top][i] = num++
+//         }
+//         top++
+//         for (let i = top; i <= bottom; i++) {
+//             res[i][right] = num++
+//         }
+//         right--
+//         for (let i = right; i >= left; i--) {
+//             res[bottom][i] = num++
+//         }
+//         bottom--
+//         for (let i = bottom; i >= top; i--) {
+//             res[i][left] = num++
+//         }
+//         left++
+//     }
+//     return res
+
+
+//     // if(matrix.length == 0){
+//     //     return []
+//     // }
+//     // let res = []
+//     // let left = 0
+//     // let right = matrix[0].length-1
+//     // let top = 0
+//     // let bottom = matrix.length-1
+//     // let numL = matrix[0].length * matrix.length
+//     // while(numL >= 1){
+//     //     for (let i = left; i <= right && numL >= 1; i++) {
+//     //         res.push(matrix[top][i])
+//     //         numL--
+//     //     }
+//     //     top++
+//     //     for (let i = top; i <= bottom && numL >= 1; i++) {
+//     //         res.push(matrix[i][right])
+//     //         numL--
+//     //     }
+//     //     right--
+//     //     for (let i = right; i >= left && numL >= 1; i--) {
+//     //         res.push(matrix[bottom][i])
+//     //         numL--
+//     //     }
+//     //     bottom--
+//     //     for (let i = bottom; i >= top && numL >= 1; i--) {
+//     //         res.push(matrix[i][left])
+//     //         numL--
+//     //     }
+//     //     left++
+//     // }
+//     // return res
+
+//     // let res = []
+//     // let m = matrix[0].length
+//     // let n = matrix.length
+//     // let i = 0 
+//     // let j = 0 
+//     // for(i = 0; i < Math.floor(Math.min(m,n)/2); i++){
+//     //     // m小于n情况
+//     //     if(Math.floor(m/2) == i){
+//     //         for (let k = i; k < n-i; k++) {
+//     //             res.push(matrix[k][i])
+//     //         }
+//     //         return res
+//     //     }
+//     //     for(j = i; j < m-1-i; j++){
+//     //         res.push(matrix[i][j])
+//     //     }
+//     //     for(j = i; j < n-1-i; j++){
+//     //         res.push(matrix[j][m-1-i])
+//     //     }
+//     //     for(j = m-1-i; j > i; j--){
+//     //         res.push(matrix[n-1-i][j])
+//     //     }
+//     //     for(j = n-1-i; j > i; j--){
+//     //         res.push(matrix[j][i])
+//     //     }
+//     // }
+//     // // m大于n情况
+//     // if(n%2 != 0){
+//     //     for(j = i; j <= m-1-i; j++){
+//     //         res.push(matrix[i][j])
+//     //     }
+//     // }
+//     // return res
+
+// }
+// let res = testSubStr(3)
+// console.log(res);
+
+/* 
+    摩斯电码有多少种解法
+    110     4
+    100     3
+    101     3
+    1101    4
+*/
+// let s = '110'
+// function testSubStr(s){
+//     if(s.length === 0){
+//         return 0
+//     }
+
+// }
+// let res = testSubStr(s)
+// console.log(res);
+
+
+    // window.onload = function(){
+        // window.name='page11'
+    // }
+    // 'use strict';
+    // abc = 'Hello, world';
+    
+    // function Student(name) {
+    //     this.name = name;
+    //     this.hello = function () {
+    //         alert('Hello, ' + this.name + '!');
+    //     }
+    // }
+
+    // function Student(name) {
+    //     this.name = name;
+    // }
+
+    // Student.prototype.hello = function () {
+    //     alert('Hello, ' + this.name + '!');
+    // };
+
+    // var xiaoming = new Student('小明');
+    // // xiaoming.name; // '小明'
+    // // xiaoming.hello(); // Hello, 小明!
+    // console.log('hello' in xiaoming);
+    // console.log(xiaoming.hasOwnProperty('hello'));
+    
+
+    // var re = /^[a-zA-Z0-9][a-zA-Z0-9\.]+@[a-zA-Z0-9]+\.(com|org)$/;
+    // // var re = /^[0-9a-zA-Z\.]+@[0-9a-zA-Z]+\.[a-zA-Z]+$/;
+    // console.log(re.test('bill%gates@ms.com'));
+    // console.log(re.test('someone@gmail.com'));
+    // var re = /\<([a-zA-Z\s]+)\>/;
+    // console.log(re.exec('<Tom Paris> tom@voyager.org'));
+
+    // var count = 0;
+    // var oldParseInt = parseInt; // 保存原函数
+
+    // window.parseInt = function () {
+    //     count += 1;
+    //     return oldParseInt.apply(null, arguments); // 调用原函数
+    //     return oldParseInt(...arguments); // 调用原函数
+    // };
+    // console.log(parseInt('10'));
+    // parseInt('20');
+    // parseInt('30');
+    // console.log('count = ' + count); // 3
+
+    
+    // var name = '小明';
+    // var age = 20;
+    // var message = `你好, ${name}, 你今年${age}岁了!`;
+    // alert(message);
+
+// // 顺时针输出二维数组
+// let arr = []
+// let m = 10
+// let n = 5
+// for (let i = 0; i < n; i++) {
+//     arr[i] = new Array()
+//     for (let j = 0; j < m; j++) {
+//         arr[i][j] = ''+i+j
+//     }
+// }
+// console.log(arr);
+// let res = []
+// for (var i = 0; i < Math.floor(n/2); i++) {
+//     // 上边
+//     for (let j = i; j < m-1-i; j++) {
+//         res.push(arr[i][j])
+//     }
+//     // 右边
+//     for (let j = i; j < n-1-i; j++) {
+//         res.push(arr[j][m-i-1])
+//     }
+//     // 下边
+//     for (let j = m-i-1; j > i; j--) {
+//         res.push(arr[n-i-1][j])
+//     }
+//     // 左边
+//     for (let j = n-i-1; j > i; j--) {
+//         res.push(arr[j][i])
+//     }
+// }
+// if(n%2 != 0){
+//     for (let j = i; j < m-i; j++) {
+//         res.push(arr[i][j])
+//     }
+// }
+// console.log(res);
+
+// var reverseWords = function(s) {
+//     let arr = s.split(' ')
+//     for(let i = 0; i < arr.length; i++){
+//         arr[i] = arr[i].split('').reverse().join('')
+//     }
+//     return arr.join(' ')
+// };
+// let res = reverseWords("Let's take LeetCode contest")
+// console.log(res);
+
+    // var threeSumClosest = function(nums, target) {
+    //     nums.sort((a,b)=>{
+    //         return a-b
+    //     })
+    //     //Math.pow(2, 53) - 1     // 9007199254740991
+    //     // console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+    //     // console.log(Number.MIN_SAFE_INTEGER); //-9007199254740991
+    //     let result = 0
+    //     // console.log(nums,result);
+    //     let lastn = Number.MAX_SAFE_INTEGER
+    //     for(let i = 0; i < nums.length-2; i++){
+    //         for(let k = i+1; k < nums.length-1; k++){
+    //             for(let j = nums.length-1; j > k; j--){
+    //                 if(Math.abs(nums[i]+nums[k]+nums[j]-target) < lastn){
+    //                     lastn = Math.abs(nums[i]+nums[k]+nums[j]-target)
+    //                     result = nums[i]+nums[k]+nums[j];
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return result
+    // };
+    // let res = threeSumClosest([-1,2,1,-4],1)
+    // console.log(res);
+
+    // // 手写一个菱形
+    // let size = 17;
+    // let k = Math.floor(size/2);
+    // let str = ''
+    // console.log(k);
+    // for(let i = 0; i<size; i++){
+    //     for (let j = 0; j < size; j++) {
+    //         if(j==k||size-1-j==k){
+    //             str+='*'
+    //         }else{
+    //             str+=' '
+    //         }
+    //     }
+    //     str+='\n'
+    //     if(i<Math.floor(size/2)){
+    //         k--
+    //     }else{
+    //         k++
+    //     }
+    // }
+    // console.log(str);
+
+
+    // //原型链相关
+    // function A(){
+    //     this.do = function(){
+    //         return 'foo'
+    //     }
+    // }
+    // A.prototype.do=function(){
+    //     return 'bar'
+    // }
+    // var x = new A().do()
+    // console.log(x);
+
+
+    // var findMedianSortedArrays = function(s, numRows) {
+    //     if(numRows==1){
+    //         return s
+    //     }
+    //     let children = []
+    //     for (let i = 0; i < numRows; i++) {
+    //         children[i] = []
+    //     }
+    //     for(let i = 0; i < s.length; i++){
+    //         let candy = i%(2*numRows-2)
+    //         if(candy < numRows){
+    //             console.log(candy);
+    //             children[candy].push(s[i])
+    //         }else{
+    //             console.log(2*numRows-2-candy);
+    //             children[2*numRows-2-candy].push(s[i])
+    //         }
+    //     }
+    //     let str = ''
+    //     for(let i = 0; i < numRows; i++){
+    //         for (let j = 0; j < children[i].length; j++) {
+    //             str += children[i][j]
+    //         }
+    //     }
+    //     return str
+    // };
+    // let res = findMedianSortedArrays("LEETCODEISHIRING",4)
+    // console.log('res',res);
+
+
+        // let a = [111,222]
+        // console.log(Math.max.apply(null,a));
+        // console.log(Math.max(...a));
+
+        // var i = 10
+        // aaa = function(){
+        //     console.log('i =',i);
+        // }
+        // aaa()
+        // i = 100
+        // bbb = function(){
+        //     console.log('i =',i);
+        // }
+        // aaa()
+        // bbb()
+
+        // var i = 10
+        // ccc = (num) => {
+        //     return function(){
+        //         console.log('i =',num);
+        //     }
+        // }
+        // ccc = ccc(i)
+        // i = 100
+        // ddd = function(num){
+        //     console.log('i =',num);
+        // }(i)
+        // ccc()
+        // ddd()
+        // console.log(ccc);
+
+        // 注释掉存入cache的步骤后电脑差点崩了！
+        // 又试了一次电脑又开始响了！不试了！！
+        // function memoizeFunction(func)
+        // {
+        //     var cache = {};
+        //     return function()
+        //     {
+        //         console.log('start',arguments[0]);
+        //         var key = arguments[0];
+        //         if (cache[key])
+        //         {
+        //             console.log('end in cathe');
+        //             return cache[key];
+        //         }
+        //         else
+        //         {
+        //             console.log(111);
+        //             var val = func.apply(this, arguments);
+        //             cache[key] = val;
+        //             console.log('end n',key);
+        //             return val;
+        //         }
+        //     };
+        // }
+
+
+        // var fibonacci = memoizeFunction(function(n)
+        // {
+        //     console.log('n',n);
+        //     return (n === 0 || n === 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+        // });
+
+        // console.log(fibonacci(100)); // 输出354224848179262000000
+        // console.log(fibonacci(100)); // 输出354224848179262000000
+
+
+        // var name=" the window" ;
+        // var obj={
+        //     name: "My object",
+        //     getNameFun: function(){
+        //         return function(){
+        //             return this . name;
+        //         }
+        //     }
+        // }
+        // console.log(obj.getNameFun()()); //the window
+
+        // var user = {
+        //     name: "Rahul Mhatre",
+        //     whatIsYourName: function() {
+        //         console.log(this.name);
+        //     }
+        // };
+
+        // user.whatIsYourName(); // 输出"Rahul Mhatre",
+    </script>
+    <style>
+        .box1{
+            width:200px;
+            height:200px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .box2{
+            width:150px;
+            height:150px;
+            background-color: darkgray;
+            position: relative;
+        }
+        .box3{
+            width:100px;
+            height:100px;
+            background-color: darkred;
+        }
+        .box4{
+            width:50px;
+            height:50px;
+            position: absolute;
+            left: 300px;
+            background-color: blueviolet;
+        }     
+        .sanjiao{
+            border-left: 5px solid red;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        .lingxingr{
+            border-left: 5px solid red;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            float: left;
+        }  
+        .lingxingl{
+            border-right: 5px solid red;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            float: left;
+        } 
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3">
+                <div class="box4"></div>
+            </div>
+        </div>    
+    </div>
+    <div class="sanjiao"></div>
+    <div class="lingxingl"></div>
+    <div class="lingxingr"></div>
+
+    <div class="app">
+        {{message}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el: '.app',
+            data: {
+                message: '000000'
+            },
+            mounted(){
+                setTimeout(()=>{
+                    this.message = '111111'
+                },100)
+                setTimeout(()=>{
+                    this.message = '222222'
+                },100)
+                setTimeout(()=>{
+                    this.message = '333333'
+                },100)
+                setTimeout(()=>{
+                    this.message = '444444'
+                },100)
+                setTimeout(()=>{
+                    this.message = '555555'
+                },100)
+                setTimeout(()=>{
+                    this.message = '666666'
+                },100)
+                setTimeout(()=>{
+                    this.message = '777777'
+                },200)
+            }
+        })
+        
+        let observer = new MutationObserver(()=>{ //异步执行微任务
+            console.log(1)
+        })
+        let node = document.createElement('div')
+        // observe是MutationObserver的方法
+        observer.observe(node,{ // 监听节点
+            childList:true // 监听子节点的改变，一旦改变则触发回调函数 nextTickHandler 
+        })
+        node.innerHTML = 1
+    </script>
+
+    <!-- data:[
+        {
+            id:1,
+            name:a,
+            children:[
+                {
+                    id:11,
+                    name:aa,
+                    children:[]
+                }
+            ]
+        },
+        {
+            id:2,
+            name:b,
+            children:[
+                {
+                    id:22,
+                    name:bb,
+                    children:[
+                        {
+                            id:22,
+                            name:bb,
+                            children:[]
+                        }
+                    ]
+                }
+            ]
+        }] -->
+
+        <!-- 父组件 compoName = treeItem-->
+        <!-- <component :is="compoName" :item="item"></component> -->
+        <!-- <treeItem v-for="item in data" :item="item"></treeItem> -->
+
+
+        <!-- 子组件 treeItem-->
+        <!-- <treeItem v-for="item in item.children" :item="item"></treeItem> -->
+
+
+</body>
+</html>

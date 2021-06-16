@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="father">
+        <hr>
+        一号父亲
+        <child>
+            <template slot-scope="ranndom">
+                {{ranndom}}<br>
+                <!-- 1、传到父组件后messageChild变成了messagechild   2、可以传多个属性-->
+                {{ranndom.messagechild}}<br>
+                {{ranndom.count}}<br>
+            </template>
+        </child>
+        <hr>
+    </div>
+    <!-- <div id="father2">
+        <hr>
+        二号父亲
+        <child></child>
+        <child2></child2>
+        <hr>
+    </div> -->
+
+    <template id="child">
+        <div>
+            #########################################
+            <div>《子组件》</div>
+
+            <slot :messageChild="messageChild" :count="count"></slot>   
+            
+            #########################################
+        </div>
+    </template>
+
+    <script>
+        //定义了一个子组件child，需在父组件的components引用
+        // 最外层必须包裹div
+        var child = {
+            template: '#child',
+            data () {
+                return {
+                    messageChild: 'childData',
+                    count: 100
+                }
+            }
+        }
+
+        //定义了一个子组件child2，无需注册，可直接引用
+        // template直接写内容
+        Vue.component('child2', {
+            data: function () {
+                return {
+                    messageChild2: 'child2Data'
+                }
+            },
+            template: '<button style="display:block;">You clicked me 0 times.</button>'
+        })
+
+        //vue实例1 father
+        var father = new Vue({
+            el: '#father',
+            data: {
+                message: 'fatherData  meimei'
+            },
+            components: {
+                child
+            }
+        })
+
+        // //vue实例2  father2
+        // var father2 = new Vue({
+        //     el: '#father2',
+        //     data: {
+        //         message2: 'father2Data'
+        //     },
+        //     components: {
+        //         child
+        //     }
+        // })
+    </script>
+</body>
+</html>

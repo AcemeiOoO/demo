@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        .container{
+            white-space: nowrap;
+            position: relative;
+            width: 1000px;
+            height: 400px;
+            overflow: hidden;
+        }
+        .container img{
+            position: absolute;
+            transition: left 2s;
+            width: 1000px;
+            height: 400px;
+        }
+        .showPrev{
+            z-index: 1;
+            left: -1000px;
+        }
+        .showThis{
+            z-index: 1;
+            left: 0;
+        }
+        .showNext{
+            z-index: 1;
+            left: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="container">
+            <img v-for="(item,index) in dataList" :src="item" alt="" :class="{showThis: index==currentIndex, showNext: index == ((currentIndex+1)>=dataList.length ? 0 : currentIndex+1), showPrev: index == (currentIndex-1+dataList.length)%dataList.length}">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el: '.app',
+            data: {
+                dataList:["./img/操作简单.png","./img/放心靠谱.png","./img/要求简单.png","https://i1.mifile.cn/a4/xmad_15535933141925_ulkYv.jpg","https://i1.mifile.cn/a4/xmad_15532384207972_iJXSx.jpg","https://i1.mifile.cn/a4/xmad_15517939170939_oiXCK.jpg"],
+                currentIndex: 0,   //默认显示图片
+                timer: null    //定时器
+            },
+            mounted(){
+                var that = this
+                setInterval(()=>{
+                    that.currentIndex++
+                    if(that.currentIndex >= that.dataList.length){
+                        that.currentIndex = 0
+                    }
+                },2000)
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+</html>

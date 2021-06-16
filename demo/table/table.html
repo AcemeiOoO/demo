@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定列和表头</title>
+    <style>
+        .outter{
+            margin: 20px auto;
+            /* 设置容器宽度 */
+            width: 800px;
+        }
+        /* 内容样式 */
+        .content{
+            /* 设置容器高度 */
+            height: 400px;
+            /* 不换行 */
+            white-space: nowrap;
+            /* 隐藏行内块的空隙 */
+            font-size: 0;
+            /* 横向滚动条和纵向滚动条都是content的 */
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        .content.fixed{
+            /* 少一个滚动条的宽度 */
+            height: 383px;
+        }
+        .tableHead.fixed,
+        .content.fixed{
+            /* 加右侧阴影 */
+            box-shadow: 5px 0 5px rgba(0, 0, 0, .1);
+        }
+        .column{
+            display: inline-block;
+        }
+        .cell{
+            width: 130px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            text-align: center;
+            border-right: 1px solid #999;
+            border-bottom: 1px solid #999;
+            /* 省略号 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 5px;
+        }
+        .column:nth-child(1){
+            border-left: 1px solid #999;
+        }
+        /* 表头样式 */
+        .tableHead{
+            white-space: nowrap;
+            /* 隐藏行内块的空隙 */
+            font-size: 0;
+            /* 隐藏滚动条 */
+            overflow: hidden;
+            /* 距离右边一个滚动条的宽度 */
+            margin-right: 17px;
+            border-top: 1px solid #999;
+        }
+        .tableHead .cell{
+            display: inline-block;
+        }
+        .tableHead .cell:nth-child(1){
+            border-left: 1px solid #999;
+        }
+        /* 固定遮挡的样式 */
+        .fixed{
+            position: absolute;
+            background-color: #fff;
+            z-index: 1;
+            /* 隐藏滚动条 */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outter">
+        <div>
+            <div class="tableHead fixed">
+                <div class="cell">固定表头</div>
+                <div class="cell">固定表头</div>
+            </div>
+            <div class="tableHead">
+                <div class="cell">日期</div>
+                <div class="cell">姓名</div>
+                <div class="cell">省份</div>
+                <div class="cell">市区</div>
+                <div class="cell">地址</div>
+                <div class="cell">财务指标</div>
+                <div class="cell">毛利率</div>
+                <div class="cell">总利润</div>
+            </div>
+        </div>
+        <div>
+            <div class="content fixed">
+                <div class="column">
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                </div>
+                <div class="column">
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                </div>
+            </div>
+            <div class="content" id="table_content">
+                <div class="column">
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                    <div class="cell">2016-05-03</div>
+                </div>
+                <div class="column">
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                    <div class="cell">王小虎</div>
+                </div>
+                <div class="column">
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                    <div class="cell">武汉</div>
+                </div>
+                <div class="column" id="shorttext">
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                    <div class="cell">洪山区</div>
+                </div>
+                <div class="column" id="longtext">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </div>
+                <div class="column">
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                    <div class="cell">23431221</div>
+                </div>
+                <div class="column">
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                    <div class="cell">87%</div>
+                </div>
+                <div class="column">
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                    <div class="cell">999666万元</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    // document.querySelectorAll('.content')[1].onscroll = function(e){
+    //     document.querySelectorAll('.content')[0].scrollTop = e.target.scrollTop
+    //     document.querySelectorAll('.tableHead')[1].scrollLeft = e.target.scrollLeft
+    // }
+    function updateData(e){
+        console.log('e.target.scrollTop',e.target.scrollTop);
+        document.querySelectorAll('.content')[0].scrollTop = e.target.scrollTop
+        document.querySelectorAll('.tableHead')[1].scrollLeft = e.target.scrollLeft
+    }
+
+    function debounce(fn, time){
+        var tid = null
+        return function(args){
+            console.log('tid',tid);
+            if(tid){
+                clearTimeout(tid)
+            }
+            tid = setTimeout(() => {
+                fn(args)
+            }, time);
+        }
+    }
+    document.querySelectorAll('.content')[1].onscroll = debounce(updateData, 100)
+
+    /*
+        scrollWidth > clientWidth
+            显示悬浮框
+
+        scrollWidth <= clientWidth
+            不显示悬浮框
+
+        offsetWidth
+    */
+</script>
+</body>
+
+</html>

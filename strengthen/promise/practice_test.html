@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<button id="btn">提交</button>
+
+<!-- <script src="./promise.js"></script> -->
+<!-- <script src="./promise_class.js"></script> -->
+<script src="./myPromise.js"></script>
+<script>
+
+// await右侧的表达式一般为 promise对象,但也可以是其它的值
+// 如果表达式是promise对象, await返回的是promise成功的值
+// 如果表达式是其它值，直接将此值作为await的返回值
+
+
+// test1
+{
+    // async function async1(){
+    //     console.log('async1');
+    //     await async2()
+    //     console.log('async1 end');
+    // }
+    // async function async2(){
+    //     console.log('async2');
+    //     return 'success'
+    // }
+    // console.log('start');
+    // setTimeout(()=>{
+    //     console.log('setTimeout');
+    // },0)
+    // async1()
+    // new Promise((resolve,reject)=>{
+    //     console.log('promise1');
+    //     resolve('yes')
+    // }).then((data)=>{
+    //     console.log(data,'promise1 end');
+    //     // return new Promise((resolve,reject)=>{
+    //     //     // resolve('what')
+    //     //     reject('wrong')
+    //     // })
+    //     // throw 'www'
+    // }).then((data)=>{
+    //     // console.log('!!!!!!',data);
+    // },(error)=>{
+    //     // console.log('errer',error);
+    // })
+    // // .catch((error)=>{
+    // //     console.log('errer',error);
+    // // })
+    // console.log('end');
+}
+
+// test2
+{
+    // const timeout = ms => new Promise((resolve, reject)=>{
+    //     setTimeout(()=>{
+    //         resolve()
+    //     },ms)
+    // })
+
+    // const ajax1 = () => timeout(2000).then(()=>{
+    //     console.log(1);
+    //     return 1
+    // })
+    // const ajax2 = () => timeout(1000).then(()=>{
+    //     console.log(2);
+    //     return 2
+    // })
+    // const ajax3 = () => timeout(2000).then(()=>{
+    //     console.log(3);
+    //     return 3
+    // })
+
+    // async function merge(ajaxArr){
+    //     let p = new Promise((resolve)=>{
+    //         resolve()
+    //     })
+    //     let res = []
+    //     for (let i = 0; i < ajaxArr.length; i++) {
+    //         p = p.then((data)=>{
+    //             if(data){
+    //                 res.push(data)
+    //             }
+    //             return ajaxArr[i]()
+    //         })
+    //     }
+    //     return p.then((data)=>{
+    //         res.push(data)
+    //         return res
+    //     })
+
+    //     // let res = []
+    //     // for (let i = 0; i < ajaxArr.length; i++) {
+    //     //     res.push(await ajaxArr[i]())
+    //     // }
+    //     // return new Promise((resolve,reject)=>{
+    //     //     resolve(res)
+    //     // })
+    // }
+
+    // merge([ajax1,ajax2,ajax3]).then((data)=>{
+    //     console.log('done');
+    //     console.log(data);
+    // })
+}
+
+// test3
+{
+    // var p = Promise.resolve(new Promise((resolve,reject)=>{reject('err')}))
+    // // 和原生的p输出的不一样
+    // // 原生的不catch会报错
+    // console.log(p);
+    // p.catch(r=>{
+    //     console.log(r);
+    // })
+
+    // var p = Promise.reject(new Promise((resolve, reject)=>{
+    //     reject('error');
+    // }))
+    // p.catch((reason)=>{
+    //     console.log(reason);
+    //     reason.catch((e)=>{
+    //         console.log(e);
+    //     })
+    // })
+}
+
+// test4
+{
+    function log(msg, time) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(msg);
+                resolve();
+            }, time);
+        });
+    }
+
+    // // 每隔1s输出1，2，3，4，耗时4s
+    // (async () => {
+    //     for(let i=1;i<5;i++){
+    //         await log(i, 1000);
+    //     }
+    // })();
+
+    // // 隔1s之后立即输出1，2，3，4，耗时1s
+    // (async () => {
+    //     [ 1, 2, 3, 4].forEach(async (i) => {
+    //         await log(i, 1000);
+    //     });
+    // })();
+
+    // // 每隔1s输出1，2，3，4，耗时4s
+    // (async () => {
+    //     for (const i of [ 1, 2,3,4]){
+    //         await log(i, 1000);
+    //     }
+    // })();
+
+
+}
+
+
+// 封装AJAX请求
+function sendAJAX(url){
+    return new Promise((resolve, reject)=>{
+        // 1、创建对象
+        let xhr;
+        if(window.XMLHttpRequest){
+            //code for all new browsers()
+            xhr = new XMLHttpRequest;
+        }else if(window.ActiveXObject){
+            //code for IE5 and IE6
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //判断是否支持请求
+        if(xhr == null){
+            alert("浏览器不支持xmlHttp");
+            return;
+        }
+
+        // 2、初始化
+        xhr.open('GET', url)
+
+        // 3、发送
+        xhr.send()
+
+        // if(httpMethod == 'GET'){
+        //     xhr.open("GET", url, async);
+        //     xhr.send(null);
+        // }else if(httpMethod == "POST"){
+        // // 如果是异步请求（默认为异步请求），则此方法会在请求发送后立即返回；如果是同步请求，则此方法直到响应到达后才会返回
+        //     xhr.open("POST", url, async);
+        //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //     xhr.send(requestData);
+        // }
+        // head请求也需要设置请求主体为null
+        // json数据需要改成表单形式  key=value&...
+
+        // 4、处理响应结果
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    resolve(xhr.response)
+                }else{
+                    reject(xhr.status)
+                }
+            }
+        }
+    })
+}
+
+
+document.getElementById('btn').addEventListener('click', async function(){
+    let duanzi = await sendAJAX('https://api.apiopen.top/getJoke')
+    console.log(duanzi);
+
+})
+
+
+</script>
+</body>
+</html>

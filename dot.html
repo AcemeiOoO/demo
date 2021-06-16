@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			.box {
+				width: 400px;
+				position: relative;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.box:after {
+				content: "...展开全部";
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				padding: 0 0 1px 0;
+				cursor: pointer;
+				background: #FFFFFF;
+				color: #3e7ac2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			请教一个多行缩进的文本，如何使用css对超过3行的部分显示缩略号，并且在后面显示一个按钮？
+			请教一个多行缩进的文本，如何使用css对超过3行的部分显示缩略号，并且在后面显示一个按钮？
+			请教一个多行缩进的文本，如何使用css对超过3行的部分显示缩略号，并且在后面显示一个按钮？
+		</div>
+	</body>
+
+</html>

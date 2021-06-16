@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /*
+    post请求的data类型：
+    1、form data
+        'Content-Type': 'application/x-www-form-urlencoded'
+
+    2、request payload——vue-resourse默认、
+    */
+
+    </script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+    /* axios
+    特点：
+    1.在浏览器中发送XMLHttpRequests请求
+    2.在node.js中发送http请求
+    3.支持Promiss API
+    4.拦截器请求和响应
+    5.转换请求和响应数据
+    6.取消请求
+    7.自动转换JSON数据
+    8.客户端支持保护安全免受CSRF/XSRF攻击
+
+    配置
+    axios.interceptors.request.use(
+        config => {
+        config.baseURL = '/api/'
+        config.withCredentials = true // 允许携带token ,这个是解决跨域产生的相关问题
+        config.timeout = 6000
+        let token = sessionStorage.getItem('access_token')
+        let csrf = store.getters.csrf
+        if (token) {
+        config.headers = {
+            'access-token': token,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        }
+        if (config.url === 'refresh') {
+        config.headers = {
+            'refresh-token': sessionStorage.getItem('refresh_token'),
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        }
+        return config
+        },
+        error => {
+        return Promise.reject(error)
+        }
+        )
+        //在 response 拦截器实现
+
+        axios.interceptors.response.use(
+        response => {
+        // 定时刷新access-token
+        if (!response.data.value && response.data.data.message === 'token invalid') {
+        // 刷新token
+        store.dispatch('refresh').then(response => {
+            sessionStorage.setItem('access_token', response.data)
+        }).catch(error => {
+            throw new Error('token刷新' + error)
+        })
+        }
+        return response
+        },
+        error => {
+        return Promise.reject(error)
+        }
+    )
+
+    */
+//    params: {
+//             id: 5
+//         },
+    // axios.post('http://47.111.18.141:10008/api1/api-b/admin/business/getTaskNum',{
+    //     boardId:["333f4079-7b3a-491f-a2d5-225d070daf19","45f24c4d-ada2-4d9e-9bec-9a1a3a28dfff","6cdb65b4-b330-4da6-a481-91eefb903b32","2381016f-93d6-4af7-9456-c597a21bf996","146bbd4a-1172-4f8e-8481-bd6103f0bcd3","09f6938d-99eb-4152-8a5e-a4a870a80a58","93966516-b697-43c7-8423-02e6b9d305c7","a95300f8-2fb3-46f3-b3ab-6d30ad2b572f","b55d5ffe-6cae-45a4-9f98-d528ca059b21","cea5fb89-1057-4677-893e-c64bd9e2c41a","e5c8a0ab-4db6-4b99-861b-3bc3fb8d6079","ec8fb8e1-f3ee-4eb9-8bbc-fc7b58037034"],token:"xianghaoadmin_1cdf549b-45dd-47e8-a9fa-8b0e5abd15cc"
+    // }).then(res => {
+    //     console.log('数据是:', res);
+    // }).catch((e) => {
+    //     console.log('获取数据失败');
+    // });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    /*
+    vue-resource    vue2.0以后不再更新 类似Ajax
+    特点：
+    1.体积小，压缩后大约12kb
+    2.支持主流浏览器，除了IE9以下
+    3.支持Promiss API 和URL Templates
+    4.支持拦截器，拦截器是全局的，可以在请求发送前和发送请求后做一些事情。
+
+    1、配置
+
+    Vue.http.options.emulateJSON = true;        //设置post请求方式为表单
+    Vue.http.options.root = 'http://localhost:3000/';    //在每次单独发起http 请求的url 路径，应该以相对路径开头，前面不能带“/” ，否则不会启用根路径做拼接
+    Vue.http.interceptors.push(function(request, next) {
+        // console.log('main 判断路由');
+
+        var currentPath;
+        if(router.history.ready){
+            currentPath = router.history.current;//当前路径
+        }else{
+            currentPath = router.history.pending;//当前路径
+        }
+
+        next((response) => {
+            // console.log('main  response = ', response);
+            
+            if (response.status == 402) {
+                //如果登录失效
+                
+                if (currentPath.meta.type != null) {
+                    Vue.prototype.elealert('未登录或登录已失效，请重新登录!');
+                    // IM 登出
+                    // IMSDK.disconnectSocket()
+                    if (currentPath.meta.type == 0) {
+                        router.replace({
+                            path: '/login',
+                        });
+                    } else {
+                        outAccount = true;
+                        router.replace({
+                            path: '/admin',
+                        });
+                    }
+                }
+                return {...response.body, ok: true};
+
+            }else if(response.status == 401){
+                Vue.prototype.elealert('您未获得该权限!');
+                return {...response.body, ok: true};
+            }else{
+                return response;
+            }
+        })
+    });
+
+    （1）emulateHTTP
+    默认值为:false,当值为true是，用HTTP的POST方式PUT，PATCH，DELETE等请求，并设置请求头字段HTTP_Method_Override为原始请求方法。
+    如果Web服务器无法处理PUT, PATCH和DELETE这种REST风格的请求，你可以启用enulateHTTP现象。启用该选项后，请求会以普通的POST方法发出，并且HTTP头信息的X-HTTP-Method-Override属性会设置为实际的HTTP方法。
+    （2）emulateJSON
+    默认值为：false,当值为true并且data为对象时，设置请求头Content-Type的值为application/x-www-form-urlencoded
+    （3）crossOrigin
+    默认值为：null，表示是否跨域，如果没有设置该属性，vue-resource内部会判断浏览器当前URL和请求URL是否跨域。
+
+
+    2、使用
+    */
+        Vue.$http.post('http://47.111.18.141:10008/api1/api-b/admin/business/getTaskNum', {
+            boardId:["333f4079-7b3a-491f-a2d5-225d070daf19","45f24c4d-ada2-4d9e-9bec-9a1a3a28dfff","6cdb65b4-b330-4da6-a481-91eefb903b32","2381016f-93d6-4af7-9456-c597a21bf996","146bbd4a-1172-4f8e-8481-bd6103f0bcd3","09f6938d-99eb-4152-8a5e-a4a870a80a58","93966516-b697-43c7-8423-02e6b9d305c7","a95300f8-2fb3-46f3-b3ab-6d30ad2b572f","b55d5ffe-6cae-45a4-9f98-d528ca059b21","cea5fb89-1057-4677-893e-c64bd9e2c41a","e5c8a0ab-4db6-4b99-861b-3bc3fb8d6079","ec8fb8e1-f3ee-4eb9-8bbc-fc7b58037034"],token:"xianghaoadmin_1cdf549b-45dd-47e8-a9fa-8b0e5abd15cc"
+        }).then(res => {
+                alert('请求成功!');   
+        },error => {
+            alert('请求失败！')
+        })
+
+    </script>
+
+    <script>
+        // ajax
+    </script>
+    <script>
+        // httpRequest
+    </script>
+</body>
+</html>
